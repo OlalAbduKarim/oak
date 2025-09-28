@@ -1,8 +1,7 @@
-
 import React from 'react';
 import type { Product } from '../types';
 import { PRODUCTS, TESTIMONIALS } from '../constants';
-import { AppStoreIcon, GooglePlayIcon, CheckCircleIcon } from '../constants';
+import { AppStoreIcon, GooglePlayIcon, CheckCircleIcon, ArrowRightIcon, InfoIcon } from '../constants';
 
 const ProductSection: React.FC<{ product: Product; reverse?: boolean }> = ({ product, reverse = false }) => {
   return (
@@ -29,22 +28,36 @@ const ProductSection: React.FC<{ product: Product; reverse?: boolean }> = ({ pro
           </div>
           
           <div className="mt-8">
-            <div className="flex items-center space-x-4">
-              <a href="#" className="inline-flex items-center bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">
-                <AppStoreIcon className="w-6 h-6 mr-2" />
-                <div>
-                  <span className="text-xs">Download on the</span>
-                  <span className="block font-semibold">App Store</span>
-                </div>
+            {product.webAppLink ? (
+              <a
+                href={product.webAppLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center ${
+                  product.accentColor === 'accent-teal' ? 'bg-accent-teal' : 'bg-forest-green'
+                } text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:opacity-90 transition-transform transform hover:-translate-y-1`}
+              >
+                Launch Web App
+                <ArrowRightIcon className="ml-2 w-5 h-5" />
               </a>
-              <a href="#" className="inline-flex items-center bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">
-                <GooglePlayIcon className="w-6 h-6 mr-2" />
-                <div>
-                  <span className="text-xs">GET IT ON</span>
-                  <span className="block font-semibold">Google Play</span>
-                </div>
-              </a>
-            </div>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <a href="#" className="inline-flex items-center bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">
+                  <AppStoreIcon className="w-6 h-6 mr-2" />
+                  <div>
+                    <span className="text-xs">Download on the</span>
+                    <span className="block font-semibold">App Store</span>
+                  </div>
+                </a>
+                <a href="#" className="inline-flex items-center bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800">
+                  <GooglePlayIcon className="w-6 h-6 mr-2" />
+                  <div>
+                    <span className="text-xs">GET IT ON</span>
+                    <span className="block font-semibold">Google Play</span>
+                  </div>
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -64,6 +77,17 @@ const ProductsPage: React.FC = () => {
           <p className="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-gray-600">
             Technology designed with purpose. Explore our platforms that are transforming industries and creating new opportunities.
           </p>
+           <div className="mt-8 max-w-3xl mx-auto bg-stone-100 border-l-4 border-accent-gold text-stone-700 p-4 text-left rounded-r-lg" role="alert">
+              <div className="flex">
+                <div className="py-1">
+                  <InfoIcon className="w-6 h-6 text-accent-gold mr-4 flex-shrink-0"/>
+                </div>
+                <div>
+                  <p className="font-bold">Public Beta Notice</p>
+                  <p className="text-sm">Our platforms are state-of-the-art and currently in a public beta as we continue to build our advanced algorithms. The app previews showcase our current design and core functionalities, which will become fully functional in the near future.</p>
+                </div>
+              </div>
+            </div>
         </div>
       </section>
       

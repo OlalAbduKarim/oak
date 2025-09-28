@@ -1,3 +1,5 @@
+// FIX: To resolve "Cannot find namespace 'React'", we import `ReactNode` directly.
+import type { ReactNode } from 'react';
 
 export interface NavLink {
   label: string;
@@ -15,6 +17,7 @@ export interface Product {
   }[];
   image: string;
   accentColor: string;
+  webAppLink?: string;
 }
 
 export interface TeamMember {
@@ -41,13 +44,19 @@ export interface BlogPost {
     id: number;
     title: string;
     excerpt: string;
+    fullText: string;
     author: string;
     date: string;
     imageUrl: string;
 }
 
 export interface Value {
-    icon: React.ReactNode;
+    icon: ReactNode;
     title: string;
     description: string;
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
 }

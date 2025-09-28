@@ -1,6 +1,5 @@
-
 import React from 'react';
-import type { NavLink, Product, TeamMember, Testimonial, Metric, BlogPost, Value } from './types';
+import type { NavLink, Product, TeamMember, Testimonial, Metric, BlogPost, Value, FAQ } from './types';
 
 // Icons
 export const AppStoreIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -31,6 +30,22 @@ export const EmpowermentIcon: React.FC<{ className?: string }> = ({ className })
     <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21a6 6 0 00-9-5.197M15 12a4 4 0 110-8 4 4 0 010 8z" /></svg>
 );
 
+export const InfoIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+);
+
+export const MailIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+);
+
+export const PhoneIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+);
+
+export const LocationMarkerIcon: React.FC<{ className?: string }> = ({ className }) => (
+    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+);
+
 // Navigation
 export const NAV_LINKS: NavLink[] = [
   { label: 'Home', path: '/' },
@@ -53,7 +68,8 @@ export const PRODUCTS: { [key: string]: Product } = {
       { target: 'For Employers', points: ['Access a curated pool of qualified candidates.', 'Reduce time-to-hire significantly.', 'Manage recruitment workflow in one place.'] }
     ],
     image: 'https://picsum.photos/seed/synergy/800/600',
-    accentColor: 'accent-teal'
+    accentColor: 'accent-teal',
+    webAppLink: 'https://synergy-app-demo.vercel.app'
   },
   agrismart: {
     name: 'Agrismart',
@@ -65,7 +81,8 @@ export const PRODUCTS: { [key: string]: Product } = {
       { target: 'For Agricultural Cooperatives', points: ['Standardize best practices across members.', 'Improve supply chain management.', 'Aggregate data for better regional forecasting.'] }
     ],
     image: 'https://picsum.photos/seed/agrismart/800/600',
-    accentColor: 'forest-green'
+    accentColor: 'forest-green',
+    webAppLink: 'https://agrismart-five.vercel.app'
   }
 };
 
@@ -97,7 +114,26 @@ export const KEY_METRICS: Metric[] = [
 ];
 
 export const BLOG_POSTS: BlogPost[] = [
-    { id: 1, title: 'The Future of Recruitment: How AI is Changing the Game', excerpt: 'Explore how platforms like Synergy are using artificial intelligence to create more efficient and equitable hiring processes for everyone...', author: 'Oak Industries', date: 'October 26, 2023', imageUrl: 'https://picsum.photos/seed/blog1/400/300' },
-    { id: 2, title: 'Data-Driven Agriculture: 5 Ways Agrismart is Helping Farmers Thrive', excerpt: 'From soil health to market trends, discover the key features in Agrismart that are empowering farmers to make smarter decisions...', author: 'Oak Industries', date: 'October 22, 2023', imageUrl: 'https://picsum.photos/seed/blog2/400/300' },
-    { id: 3, title: 'A Message from our CEO: Why We Build', excerpt: 'Olal Abdu Karim shares his vision for the future of Oak Industries and the core mission that drives our team every day...', author: 'Olal Abdu Karim', date: 'October 18, 2023', imageUrl: 'https://picsum.photos/seed/blog3/400/300' },
+    { id: 1, title: 'The Future of Recruitment: How AI is Changing the Game', excerpt: 'Explore how platforms like Synergy are using artificial intelligence to create more efficient and equitable hiring processes for everyone...', fullText: 'Explore how platforms like Synergy are using artificial intelligence to create more efficient and equitable hiring processes for everyone. Traditional recruitment is often fraught with unconscious bias and time-consuming manual screening. AI-powered matching algorithms analyze skills, experience, and career goals to connect candidates with roles where they can truly thrive. This not only speeds up the hiring process for companies but also opens up a wider range of opportunities for job seekers, ensuring a better fit for both sides. At Oak Industries, we are committed to refining these technologies to build a fairer and more productive job market.', author: 'Oak Industries', date: 'October 26, 2023', imageUrl: 'https://picsum.photos/seed/blog1/400/300' },
+    { id: 2, title: 'Data-Driven Agriculture: 5 Ways Agrismart is Helping Farmers Thrive', excerpt: 'From soil health to market trends, discover the key features in Agrismart that are empowering farmers to make smarter decisions...', fullText: 'From soil health to market trends, discover the key features in Agrismart that are empowering farmers to make smarter decisions. Our platform provides real-time data on weather patterns, soil moisture levels, and crop health, allowing for precision agriculture that maximizes yield and minimizes waste. Farmers can access up-to-the-minute market pricing to sell their produce at the optimal time. Furthermore, our community forum connects farmers from across the region, fostering a network of shared knowledge and support. Agrismart isn\'t just an app; it\'s a partner in sustainable and profitable farming.', author: 'Oak Industries', date: 'October 22, 2023', imageUrl: 'https://picsum.photos/seed/blog2/400/300' },
+    { id: 3, title: 'A Message from our CEO: Why We Build', excerpt: 'Olal Abdu Karim shares his vision for the future of Oak Industries and the core mission that drives our team every day...', fullText: 'Olal Abdu Karim shares his vision for the future of Oak Industries and the core mission that drives our team every day. "We founded Oak Industries not just to build software, but to build solutions," says Olal. "Our goal is to look at fundamental sectors like employment and agriculture and ask: how can technology create a tangible, positive impact? For us, success is measured by the opportunities we create for job seekers, the yields we help farmers increase, and the overall progress we empower. Our commitment is to our users and to building a better, more connected future through technology."', author: 'Olal Abdu Karim', date: 'October 18, 2023', imageUrl: 'https://picsum.photos/seed/blog3/400/300' },
+];
+
+export const INVESTOR_FAQS: FAQ[] = [
+    {
+        question: "What is your primary revenue model?",
+        answer: "Our revenue is generated through a hybrid SaaS model. For Synergy, we offer tiered subscription plans for employers (B2B) and premium features for job seekers (B2C). Agrismart operates on a subscription basis for individual farmers and offers customized enterprise solutions for agricultural cooperatives."
+    },
+    {
+        question: "Who are your main competitors?",
+        answer: "In the HR-Tech space, we compete with established job boards and newer AI-driven platforms. Our key differentiator is our focus on creating a holistic ecosystem for both employers and candidates. In Ag-Tech, we compete with various farm management software, but our unique combination of data analytics, market insights, and community features sets us apart."
+    },
+    {
+        question: "What is your customer acquisition strategy?",
+        answer: "Our strategy is multi-pronged, focusing on digital marketing, strategic partnerships with industry bodies, and a freemium model that allows users to experience the core value of our products. Word-of-mouth and user referrals have also been significant drivers of growth, validating our product-market fit."
+    },
+    {
+        question: "How will the funds from this investment round be used?",
+        answer: "Funds will be allocated to three key areas: 1) Accelerating product development, particularly in AI and machine learning capabilities. 2) Expanding our sales and marketing efforts to enter new international markets. 3) Scaling our infrastructure to support our growing user base and ensure platform stability."
+    }
 ];
